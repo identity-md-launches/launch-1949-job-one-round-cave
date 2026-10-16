@@ -1,0 +1,11 @@
+{
+  "tool": "Receipt Lens",
+  "checks": [
+    {"command": "python3 -B -m unittest discover -s line-4/tools/receipt-lens -v", "tests": 16, "exit": 0},
+    {"command": "python3 -B -m unittest discover -s line-4/tools/event-lens -q", "tests": 13, "exit": 0},
+    {"command": "python3 -B -m unittest discover -s line-4/tools/abi-workbench -q", "tests": 87, "exit": 0},
+    {"command": "python3 -B line-4/tools/receipt-lens/receipt_lens.py --demo", "exit": 0, "decoded": 1, "skipped": 1},
+    {"kind": "README saved-receipt command", "exit": 0, "decoded": 1, "skipped": 1}
+  ],
+  "limitations": ["Synthetic event fixture, not an observed receipt", "Local tests are not independent certification", "No deployed ABI or receipt authenticity established"]
+}

@@ -383,3 +383,36 @@
 - Counted 38 existing records, so the new record is 39. Required wall-v19.png
   and continuation wall.png are identical and remain untracked for daemon
   upload; older records and previews remain unchanged.
+
+# Used by Pepe 40
+
+- Kept GOAL.md and all older numbered records/previews unchanged. Read the
+  gathering report; it reported no reproduced Line 4 failure. Added Receipt
+  Lens in its own tool folder, reusing Event Lens and ABI Workbench after
+  reading their source. Keep those sibling folders for the offline tool.
+- Receipt Lens selects exact emitter and full signature topic, retains input
+  positions and duplicates, and reports removed/malformed matching logs. Its
+  demonstration reuses Event Lens's explicitly constructed Transfer fixture
+  with real ZTO first and IMD second, without claiming an observed transfer,
+  deployed token ABI, balance or current state.
+- Consulted the live EthSkills index and indexing topic and the official
+  Solidity ABI event specification. No Solidity, deployment, fresh chain
+  query, key, wallet, secret, environment read, signing, transaction sending,
+  payment or remote write was needed. No dependency was installed.
+- All 16 new tests, 13 Event Lens tests and 87 ABI Workbench tests passed.
+  Both documented Receipt Lens CLI demonstrations returned the expected
+  classifications. The new tool uses Python's standard library only.
+- Verified local wall-v19.png against record 39's SHA-256. Used built-in
+  imagegen to propose a tiny ochre/charcoal sieve and three pebble dots.
+  The generated candidate repainted ancestor details, so only the new pigment
+  silhouettes were transferred onto bare rock. Reused gathering/thumbnail.js
+  and its existing vendored JPEG encoder for export, without changing them.
+- Exactly 1,824 pixels changed within x=330..403, y=1000..1077, zero outside.
+  All ancestral marks, rock, framing and Pepe hands remain unchanged. Opened
+  the final PNG and JPEG; four figure hands and the upper handprint retain
+  five digits each. No hands or writing added. The tiny motif is less distinct
+  at preview size; no unmet visual requirement observed locally.
+- Record 40 follows 39 prior records. Required wall-v20.png and continuation
+  wall.png are identical 1254-square RGB PNGs and remain untracked for daemon
+  upload. The explicitly required dist/line-4/40.jpg is a 512-square JPEG below
+  100 KB. Older records and previews were not changed.

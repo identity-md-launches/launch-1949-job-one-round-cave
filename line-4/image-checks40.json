@@ -1,0 +1,53 @@
+{
+  "ancestor_sha256": "b9de39a8803bca8403c12f1bf19d89e9af81833d610edffc039b22e999393e32",
+  "generated_candidate_sha256": "906d07dc85087f2b727fd249166a7665584bd2b55be49ad7ab9a0dd381e3e3d8",
+  "method": "Built-in imagegen edit; only the generated sieve and three pebble pigment silhouettes transferred onto bare rock. Generated repaint elsewhere discarded; candidate consumed in place.",
+  "png": {
+    "paths": [
+      "artifacts/line-4/wall-v20.png",
+      "artifacts/line-4/wall.png"
+    ],
+    "format": "PNG",
+    "mode": "RGB",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "bytes": 4065478,
+    "sha256": "eaa5b1e9cdf1c45b8a7344565ec005291327baa5549cf54d51801cf3836fec4a"
+  },
+  "jpeg": {
+    "path": "dist/line-4/40.jpg",
+    "format": "JPEG",
+    "dimensions": [
+      512,
+      512
+    ],
+    "bytes": 74516,
+    "sha256": "5f13423e5674ca611a668d0f69e9d7bf4b822e2f8dfaac1a9cc0c27ed2b25f13"
+  },
+  "preservation": {
+    "rectangle": [
+      330,
+      1000,
+      403,
+      1077
+    ],
+    "changed_pixels": 1824,
+    "outside_rectangle_changed_pixels": 0
+  },
+  "visual_review_completed": true,
+  "unmet_visual_requirements": [],
+  "visual_review": {
+    "opened": [
+      "artifacts/line-4/wall-v20.png",
+      "dist/line-4/40.jpg"
+    ],
+    "pepe": "Inherited wide mouth and heavy-lidded eyes remain byte-identical outside the new bare-rock patch.",
+    "hands": "Four inherited figure hands and the upper handprint reviewed: five digits each (four fingers and one thumb). No hands added.",
+    "prohibited_content": "No new letters, numbers, signature, border, logo or prohibited symbol observed.",
+    "limitations": [
+      "The new sieve and pebbles are small at 512 pixels; local visual review is not independent certification."
+    ]
+  }
+}
