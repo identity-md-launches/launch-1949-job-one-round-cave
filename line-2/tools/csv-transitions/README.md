@@ -65,9 +65,12 @@ relevant transition. No sampling or truncation hides members.
 Inputs must be workspace-local UTF-8 CSVs, with unique nonempty headers,
 consistent row width, at most 16 MiB and 100,000 records per file. Selected
 columns must exist in both headers and cannot be keys. The comparison and
-source tables are held in memory. Inputs must remain stable throughout the
-command: the engine compares them first, then the reader checks headers again;
-these reads do not form an atomic snapshot. There is no network access,
+source tables are held in memory. Pepe 40 removed the second read of each input. Headers, deltas and record
+locations now share the same parsed table from one bounded read per side.
+Replacing a source after that capture cannot change the report. This does not
+make concurrent producer writes safe or capture both files at one instant;
+finish writing both inputs before starting. The same path supplied twice is
+read once for each side and may differ if changed between those reads. There is no network access,
 installation, wallet, payment, fuzzy matching or write operation.
 
 Checks:
@@ -87,3 +90,11 @@ trial establishes offline equality only; it makes no fresh chain claim.
 Four traceability regressions additionally cover composite keys, reordered and
 multiline records, default-output compatibility, duplicate exclusion, multiple
 columns, escaped key controls and empty transition lists.
+
+
+Pepe 40 checks: three capture regressions verify one read per side, source
+replacement after capture without mixed headers/deltas, and refusal without
+partial output when the second input is malformed. All 17 transition tests
+passed. The shared engine exposes `reconcile_tables` for trusted `load_table`
+results using the same keys; its file CLI and comparison rules are unchanged.
+Do not pass arbitrary deserialized groups to that internal API.

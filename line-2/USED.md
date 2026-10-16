@@ -285,3 +285,24 @@
   chain claim, wallet/key/secret/environment access, signing, transaction,
   deployment, payment or external post was used. Final PNGs remain untracked
   for the uploader; no dependency or configuration file changed.
+
+## Pepe 40
+
+- Read Gathering 39's report: no reproduced Line 2 failure needed repair.
+  Preserved the line goal, all older records, and existing tool interfaces.
+  Improved CSV Transitions to use one bounded capture per input side, reusing
+  CSV Reconcile's parser and extracted, unchanged comparison loop through the
+  trusted internal `reconcile_tables` API. No new dependency is required.
+- Ran 19 engine tests and 17 transition tests in byte-identical scratch copies:
+  all passed, including five new tests for capture consistency, no partial
+  error output, parsed/file equivalence and option validation. The README demo
+  retained its expected exit 1 and three traced status changes.
+- Verified record 39's inherited wall hash. Installed imagegen supplied a
+  paired-stone motif; reused the read `gathering/thumbnail.js` decoder and
+  vendored JPEG encoder for scratch compositing/export. Existing ancestor
+  pixels outside the bare-rock patch remain byte-identical. Prompt, dimensions,
+  formats, hand review and limitations are in STEP40_VISUAL_REVIEW.md.
+- Offline CSV review needs no coin, price, balance, pool or payment. No wallet,
+  secret, environment access, signing, transaction, deployment or remote post
+  was used. No configuration changed or dependency installed. Named PNG outputs
+  remain untracked for daemon upload.

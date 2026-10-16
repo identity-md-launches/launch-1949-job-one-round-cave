@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('transitions_tool', Path(__file__).with_name('transitions.py'))
 tool = importlib.util.module_from_spec(spec)
@@ -150,6 +151,39 @@ class TransitionTests(unittest.TestCase):
         r = tool.transitions(b,b,('id',),('v',),True)
         self.assertTrue(r['equal'])
         self.assertEqual(r['columns'][0]['transitions'], [])
+
+    def test_single_read_per_input_even_for_same_path(self):
+        b = self.write('b.csv', [['id','v'],['x','a']])
+        with patch.object(tool.engine, 'load_table', wraps=tool.engine.load_table) as read:
+            r = tool.transitions(b,b,('id',),('v',),True)
+        self.assertTrue(r['equal'])
+        self.assertEqual(read.call_count, 2)
+
+    def test_replacement_after_capture_cannot_mix_headers_and_deltas(self):
+        b = self.write('b.csv', [['id','v'],['x','old']])
+        a = self.write('a.csv', [['id','v'],['x','new']])
+        original = tool.engine.load_table
+        def capture_then_replace(path, keys):
+            table = original(path, keys)
+            Path(path).write_text('id,other\nx,replaced\n', encoding='utf-8')
+            return table
+        with patch.object(tool.engine, 'load_table', side_effect=capture_then_replace) as read:
+            r = tool.transitions(b,a,('id',),('v',),True)
+        self.assertEqual(read.call_count, 2)
+        self.assertEqual(r['schema'], {'added_columns':[], 'removed_columns':[]})
+        self.assertEqual(r['columns'][0]['transitions'], [
+            {'before':'old','after':'new','rows':1, 'records':[
+                {'key':{'id':'x'},'before_record':2,'after_record':2}]}])
+
+    def test_bad_second_capture_emits_no_partial_result(self):
+        b = self.write('b.csv', [['id','v'],['x','old']])
+        a = self.write('a.csv', [['id','v'],['x']])
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = tool.main([str(b),str(a),'--key','id','--column','v'])
+        self.assertEqual(code,2)
+        self.assertEqual(out.getvalue(),'')
+        self.assertIn('error',json.loads(err.getvalue()))
 
 
 if __name__ == '__main__':

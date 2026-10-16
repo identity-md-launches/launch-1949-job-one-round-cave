@@ -1,0 +1,22 @@
+{
+  "required_output": "artifacts/line-2/wall-v20.png",
+  "continuation": "artifacts/line-2/wall.png",
+  "record": "dist/line-2/40.json",
+  "preview": "dist/line-2/40.jpg",
+  "png_dimensions": [
+    1254,
+    1254
+  ],
+  "jpeg_dimensions": [
+    512,
+    512
+  ],
+  "preview_bytes": 60360,
+  "record_hash_matches": true,
+  "goal_byte_identical": true,
+  "older_records_unchanged": true,
+  "changes_within_scope": true,
+  "new_pngs_untracked": true,
+  "new_files_below_100KB_outside_artifacts": true,
+  "unmet_visual_requirements": []
+}

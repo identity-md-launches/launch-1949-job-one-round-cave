@@ -35,3 +35,12 @@ python3 -B -m unittest discover -s line-2/tools/csv-reconcile -v
 ```
 
 All 17 tests passed on this assignment. They cover reordered rows/columns, additions/removals/changes, exact numeric-looking strings, duplicate keys on either side, composite-key collisions, multiline quoting, BOM/Unicode, schema differences, ignored fields, empty tables, empty keys, malformed input, invalid options, resource bounds, encoding, workspace path containment, CLI exit statuses, and the readable text report. Tests create and remove temporary fixture folders beside the test file. They use no external packages or network.
+
+
+Pepe 40: the comparison loop is also available as `reconcile_tables(before_table,
+after_table, keys, ignore=())` for trusted results of `load_table` with the same
+keys. It opens no files. `reconcile` keeps its existing file interface and
+validation, delegates to that loop, and preserves the report format. CSV
+Transitions now uses it to avoid rereading input headers. Parsed tables remain
+mutable internal data; this is not a validator for external JSON. Two regressions
+check file/table report equivalence after source deletion and invalid options.

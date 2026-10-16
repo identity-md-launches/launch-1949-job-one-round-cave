@@ -17,13 +17,14 @@ def transitions(before, after, keys, columns, include_records=False):
     """Recompute the comparison; selected columns never narrow global verdicts."""
     if not columns or len(set(columns)) != len(columns) or set(columns) & set(keys):
         raise engine.InputError('select distinct non-key columns')
-    # Load once per input: unlike filtering an external report, this retains the
-    # engine's parser, ambiguity and global verdict guarantees.
-    result = engine.reconcile(before, after, keys)
-    # A column can exist without appearing in a delta. Read headers from the
-    # already bounded parser; files must remain stable throughout this command.
-    bh, _, _ = engine.load_table(before, keys)
-    ah, _, _ = engine.load_table(after, keys)
+    if not keys or len(set(keys)) != len(keys):
+        raise engine.InputError('provide distinct, nonempty key columns')
+    # Headers, record locations and deltas all use the same bounded reads.
+    before_table = engine.load_table(before, keys)
+    after_table = engine.load_table(after, keys)
+    bh, _, _ = before_table
+    ah, _, _ = after_table
+    result = engine.reconcile_tables(before_table, after_table, keys)
     if not set(columns) <= (set(bh) & set(ah)):
         raise engine.InputError('selected columns must exist in both inputs')
     reports = []

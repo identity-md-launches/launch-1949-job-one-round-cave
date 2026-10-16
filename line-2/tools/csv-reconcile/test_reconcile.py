@@ -131,6 +131,23 @@ class ReconciliationTests(unittest.TestCase):
         self.assertIn('## Ambiguous keys', report)
         self.assertIn('no automatic pairing', report)
 
+    def test_captured_table_api_matches_file_api_and_survives_deletion(self):
+        expected = self.compare('id,v,extra\na,01,x\nb,left,x\nb,right,x\nd,gone,x\n',
+                                'v,id,extra\n1,a,y\nnew,c,z\n', ignore=('extra',))
+        before = tool.load_table(self.b, ('id',))
+        after = tool.load_table(self.a, ('id',))
+        self.b.unlink()
+        self.a.unlink()
+        self.assertEqual(tool.reconcile_tables(before,after,('id',),('extra',)), expected)
+
+    def test_captured_table_api_rejects_invalid_options(self):
+        self.compare('id,v\na,x\n', 'id,v\na,y\n')
+        b = tool.load_table(self.b, ('id',))
+        a = tool.load_table(self.a, ('id',))
+        for keys, ignore in [((),()), (('id','id'),()), (('id',),('id',)), (('id',),('missing',))]:
+            with self.subTest(keys=keys,ignore=ignore), self.assertRaises(tool.InputError):
+                tool.reconcile_tables(b,a,keys,ignore)
+
 
 if __name__ == '__main__':
     unittest.main()
