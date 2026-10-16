@@ -55,8 +55,23 @@ def reconcile(before, after, keys, ignore=()):
         raise InputError('provide distinct, nonempty key columns')
     if set(keys) & set(ignore):
         raise InputError('key columns cannot be ignored')
-    bh, bg, bn = load_table(before, keys)
-    ah, ag, an = load_table(after, keys)
+    before_table = load_table(before, keys)
+    after_table = load_table(after, keys)
+    return reconcile_tables(before_table, after_table, keys, ignore)
+
+
+def reconcile_tables(before_table, after_table, keys, ignore=()):
+    """Compare two load_table results without reopening either source file.
+
+    Tables must come from load_table with the same keys. This internal API
+    accepts trusted parsed tables, not arbitrary JSON or user-supplied groups.
+    """
+    if not keys or len(set(keys)) != len(keys):
+        raise InputError('provide distinct, nonempty key columns')
+    if set(keys) & set(ignore):
+        raise InputError('key columns cannot be ignored')
+    bh, bg, bn = before_table
+    ah, ag, an = after_table
     missing_ignored = set(ignore) - (set(bh) | set(ah))
     if missing_ignored:
         raise InputError(f'ignored columns do not exist: {sorted(missing_ignored)}')

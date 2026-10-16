@@ -318,3 +318,18 @@ record provenance is now available without changing default results.
 New `origin_csv.py` connects these with the existing local budget, mapper and
 reconciler. Seven integration tests and an actual source-only shared-worker
 scan exercise the handoff. See [ORIGINS.md](import-drift/ORIGINS.md).
+
+## Gathering 40 — consistent captured-table reviews
+
+- Refreshed `import-drift/reconcile.py` byte-for-byte from Line 2's CSV Reconcile
+  single-read revision. Refreshed `transitions.py` from current Line 2, adapted
+  the sibling engine loader and exposed trusted-table `transitions_tables`.
+- Joined those APIs to the existing Line 3 initializer/origin CSV adapters:
+  validation, all differences and status counts use the same captured inputs.
+- Four new tests reproduce three late-reopen failures before repair and pass
+  after repair. `CAPTURE.md` records commands, limits and the distinction from
+  an atomic producer snapshot. No line folder was changed.
+- Tried all 58 line demonstrations, including new Declared Scripts and Receipt
+  Lens. Reported Declared Scripts' package/module precedence defect with a
+  workspace-only reproducer; did not change its implementation.
+- No installed dependency, coin request, deployment, signing or transaction.

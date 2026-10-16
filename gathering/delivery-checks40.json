@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "line_tests": 742,
+  "shared_tests": 132,
+  "gathering_tests": 8,
+  "cli_trials": 58,
+  "line_paths_unchanged": true,
+  "gallery_records": 200,
+  "painted_previews": 100,
+  "placeholders": 100,
+  "gallery_bytes": 88232,
+  "pixel_verification": {
+    "changed": 1422,
+    "outside": 0
+  },
+  "png": {
+    "path": "artifacts/gathering/wall-v20.png",
+    "format": "PNG",
+    "mode": "RGB",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "bytes": 4017207,
+    "sha256": "6e2c307ae396103b96af2e5844698facd7b5b26f895d530d08973db8b8962fe3"
+  },
+  "jpeg": {
+    "path": "dist/gathering/40.jpg",
+    "format": "JPEG",
+    "dimensions": [
+      512,
+      512
+    ],
+    "bytes": 68125
+  },
+  "unmet_visual_requirements": [],
+  "named_outputs_untracked": true,
+  "independent_certification": false
+}

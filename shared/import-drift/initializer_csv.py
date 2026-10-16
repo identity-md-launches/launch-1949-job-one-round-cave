@@ -59,8 +59,8 @@ def snapshot(root, limits=None):
 
 
 def compare(before, after):
-    for path in (before, after):
-        columns, groups, _ = reconcile.load_table(path, KEYS)
+    tables = [reconcile.load_table(path, KEYS) for path in (before, after)]
+    for columns, groups, _ in tables:
         if columns != list(COLUMNS):
             raise ValueError('expected initializer-csv/v1 columns')
         for key, rows in groups.items():
@@ -69,9 +69,9 @@ def compare(before, after):
             for number, minimum in zip(key[1:], (1, 0, 0)):
                 if not number.isascii() or not number.isdecimal() or str(int(number)) != number or int(number) < minimum:
                     raise ValueError('invalid source coordinate')
-    # Inputs must stay stable across these bounded reads, as in CSV Transitions.
-    details = reconcile.reconcile(before, after, KEYS)
-    counts = transitions.transitions(before, after, KEYS, ['base_status'])
+    # Validation, full differences and counts share the same two captures.
+    details = reconcile.reconcile_tables(*tables, KEYS)
+    counts = transitions.transitions_tables(*tables, KEYS, ['base_status'])
     return {'schema': 'initializer-review/v1', 'comparison': details,
             'status_transitions': counts, 'scope': SCOPE}
 

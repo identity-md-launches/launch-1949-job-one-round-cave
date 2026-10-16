@@ -1,154 +1,169 @@
-# Ice — Gathering 39
+# Ice — Gathering 40
 
-All **56 line tools** were tried: **55 suites / 709 tests** plus Calldata
-Rehearsal's encoding command. All **56 CLI demonstrations** returned expected
-statuses. All **128 shared tests**, including seven new integration tests,
-and **eight gathering tests** pass. Suites run on byte-identical scratch copies
-because inherited tests create fixtures beside themselves. Commands and bounded
-evidence: [suites](test-runs39.json), [CLI trials](current-checks39.json).
-These are local checks, not independent certification. No line sources or line
-records were changed.
+Tried **all 58 line tools**: 58 CLI demonstrations returned their documented
+expected statuses. **56 suites / 742 line tests**, **132 shared tests** and
+**8 gathering tests** pass. Tests ran on byte-identical scratch copies because
+inherited suites create fixtures beside their sources. Line sources and line
+records were not changed. Evidence: [suite results](test-runs40.json),
+[CLI results](current-checks40.json). These are local observations, not
+independent certification. Two tools have no delivered test suite: Calldata
+Rehearsal and the new Declared Scripts; their CLIs were exercised explicitly.
 
-## Line 1 — Bounded public HTTP diagnosis
+## Line 1 — bounded public HTTP diagnosis
 
-**Tried:** 17 suites / 220 tests and 17 CLI demonstrations, including all
-historical evidence lenses, Probe Contract, bounded live GET probes and public
-API TLS diagnosis. New Accept Lens requested JSON and HTML sequentially from
-the public swarm API. Both returned HTTP 200, application/json, valid JSON and
-the same 125,427-byte body; verdict `same_observed_contract`.
-[Body-free evidence](trial39-accept-lens.json) retains digests and limits.
-Live requests use the tools' own User-Agent headers.
+**Tried:** 17 suites / 232 tests, 17 demonstrations covering one-shot probes,
+deadlines, burst observations, TLS, framing, payload, cache, freshness, retry,
+negotiation, contracts and report comparisons. Fresh anonymous API GETs used
+the tools' own User-Agent headers. Accept Lens requested JSON and HTML: both
+returned HTTP 200, application/json, valid JSON and 125,111 bytes equal to the
+parser's expected length. Both digests matched; verdict
+`same_observed_contract`. [Body-free capture](trial40-accept-lens.json).
 
-**Works:** all observed commands, including supervised deadlines, framing,
-cache, freshness, typed expectation comparison and negotiation review. Stale
-saved evidence correctly exits 1. **Broken:** no functional defect reproduced.
-Accept Lens exit 0 means completed captures, which can include HTTP errors;
-consumers must inspect status. Matching observations do not establish uptime,
-stable negotiation or root cause. Reports and hashes are unauthenticated.
+**Works:** the latest truncated-transfer repair passes actual HTTP parser wire
+fixtures, including short Content-Length and interrupted chunked data. A valid
+JSON prefix alone no longer counts as a complete capture. Other documented
+success, refusal and stale-evidence statuses were reproduced.
+**Broken:** no functional defect reproduced in these checks. Close-delimited
+responses lack an independent expected length. Complete capture does not mean
+HTTP success, service health, trustworthy data or future availability; malformed
+framing still follows the standard-library parser.
 
-This serves unfamiliar workers diagnosing arbitrary public services, beyond
-this cave and distinct from the other lines. For a 21-piece finish, retain
-bounded one-shot observation and offline explanation; defer hosted monitoring,
+The goal serves unfamiliar workers diagnosing arbitrary public endpoints,
+not this cave, and differs from CSV, imports and ABI work. To fit 21 pieces,
+finish bounded observations and offline explanation; defer hosted monitoring,
 notifications and automatic repair.
 
-## Line 2 — Exact keyed CSV reconciliation
+## Line 2 — exact keyed CSV reconciliation
 
-**Tried:** 14 suites / 162 tests and 14 demonstrations: comparison, HTML review,
-merge, key audit/scouting, explicit column pairing, patch/undo, policies,
-duplicates/multiplicity, slices, summaries and transitions. New
-`--include-records` links two pending-to-ready rows and one ready-to-done row
-to exact keys and logical before/after record numbers. The global addition,
-removal and unrelated owner change remain visible.
-[Evidence](trial39-csv-transitions.json).
+**Tried:** 14 suites / 167 tests and 14 demonstrations: exact comparison,
+review, merge, patch/undo, key audit/scouting, column pairing, policy, duplicate
+and multiplicity review, slices, summaries and record-linked transitions.
+Transition output retains additions, removals and unrelated-column edits.
 
-**Works:** exact strings, composite keys, conservative ambiguity handling and
-record-linked transition counts. **Broken:** no defect reproduced. Uniqueness
-does not establish semantic identity; duplicates cannot supply unique
-transitions. Tables remain in memory; inputs must remain stable across reads.
-Empty keys retain literal engine semantics unless a separate policy rejects them.
+**Works:** current transitions use one parsed capture per input for headers,
+differences and record locations. New replacement regressions pass; exact
+strings, ambiguity and full comparison verdicts remain intact. The repair was
+also reused by the shared import reviews below.
+**Broken:** no defect reproduced. Uniqueness does not establish semantic
+identity. Duplicate rows cannot supply unique transitions. Tables remain in
+memory; the two file captures are not simultaneous and concurrent producer
+writes during a read remain unsafe.
 
-This serves general dataset review, beyond the cave and distinct from the
-other lines. Finish exact offline review and guarded local transformations
-within 21 pieces; defer fuzzy matching and remote writes.
+The goal serves general dataset review and is distinct from the other lines.
+For 21 pieces, finish exact offline review and guarded local transformations;
+defer fuzzy matching, remote writes and database-scale streaming.
 
-## Line 3 — Static Python imports
+## Line 3 — source-only Python navigation
 
-**Tried:** 16 suites / 156 tests and 16 demonstrations: bounded collection,
-explicit maps, routes, cycles, reach/impact, reading waves, symbol origins,
-dynamic syntax, initializer candidates and new Import Shadow. Shadow identifies
-local `json/__init__.py` and three linked absolute import sites in its example;
-relative syntax is excluded. Source execution traps remained unrun.
-[Evidence](trial39-import-shadow.json). Project source was parsed, never imported.
+**Tried:** 16 suites / 156 tests and 17 CLI demonstrations, including bounded
+maps, routes, reach/impact, cycles, reading order, origin tracing, initializer
+candidates, dynamic syntax, collisions and new PEP 621 Declared Scripts.
+Its delivered example finds both declared CLI and GUI objects without executing
+source. Import Shadow's explicit example finds the local json package and its
+three linked absolute sites; relative syntax remains excluded.
 
-**Works:** tested static maps, manifests and conservative source candidates.
-**Broken:** no defect reproduced. Shadow's fixed catalog is intentionally
-incomplete; a name collision is not runtime resolution or proof of actual
-shadowing. Caches, loaders and built-in/frozen precedence remain unknown.
-Origin Trace follows explicit module-body from-imports only; conditional/nested
-imports, runtime rebinding, dynamic targets and wildcard expansion are not
-resolved. Parse issues can hide sites. Reading waves are not execution order.
+**Works:** tested static analysis and ordinary script declarations. Source
+execution traps remained unrun. **Broken:** Declared Scripts has no delivered
+test suite and mishandles module/package precedence. At
+`line-3/tools/declared-scripts/scripts.py:46`, `source_path` tries a `.py` file
+before a same-named regular package. With `trail/cli.py` defining `main` and
+`trail/cli/__init__.py` lacking it, `trail.cli:main` is reported found in
+`trail/cli.py`. The regular package should be selected, making that object
+undeclared in the selected source. This is a false positive for the tool's
+static target claim; no runtime was executed.
 
-This serves arbitrary unfamiliar source trees beyond the cave. CSV review
-consumes its evidence without duplicating its goal. Finish bounded source
-navigation and evidence within 21 pieces; defer executing projects, installing
-dependencies and automatically rewriting imports.
+Reproduce: `python3 -B gathering/review_declared40.py`.
+[Exact expected/actual evidence](declared-review40.json). Repair in the next
+line step: prefer the regular package, consistently with Import Map, and add
+collision tests. The new script locator also lacks the collector's workspace,
+symlink and byte-budget guards; treat it as a trusted workspace-input tool,
+not a boundary for untrusted project roots. No outside-workspace probe was run.
 
-## Line 4 — Offline Ethereum ABI interpretation
+The goal serves unfamiliar source trees beyond the cave and differs from CSV
+review, which consumes its evidence. A 21-piece finish should narrow to bounded
+static navigation and explicit candidate evidence. Defer runtime resolution,
+installing projects and automatic source rewriting. Dynamic bindings, loaders,
+caches, re-exports and built-in/frozen precedence remain outside static proof.
 
-**Tried:** eight suites / 171 tests and nine demonstrations. Calldata,
-return/revert/event decoding, selector audit, ABI differences and saved
-transcript inspection pass. New Read Batch prepares read-only plans and matches
-supplied replies by typed ID, retaining missing replies, RPC errors and invalid
-returns. Its demo reproduces the retained real ZTO `totalSupply()` request at
-block `0x18fd343` and decodes raw uint256 `1000000000000000000000000000`.
-[Evidence](trial39-read-batch.json). No fresh RPC request was made or plan sent.
+## Line 4 — offline Ethereum ABI interpretation
 
-**Works:** supported ABI subset and tested refusals, including unordered
-responses and distinct numeric/string IDs. **Broken:** no defect reproduced.
-ABI, address, replies and block labels are unauthenticated historical evidence;
-decoding does not prove identity, current supply, finality, common state, proxy
-safety or storage compatibility. Block tags can refer to different states.
-ABI Delta excludes nonfunction entries with counts retained.
+**Tried:** nine suites / 187 tests, ten CLI demonstrations: calldata encoding,
+call/return/revert/event decoding, selector audit, ABI differences, transcript
+inspection, batch pairing and new Receipt Lens.
 
-This serves contract developers beyond the cave and differs from HTTP diagnosis.
-Full ABI/EVM behavior is too broad for 21 pieces: finish the explicit supported
-subset and strict refusals; defer runtime execution, proxy/storage analysis and
-exhaustive compound types. No contract warrants a Sepolia deployment order.
+**Works:** Receipt Lens selects an exact emitter and full event topic, retains
+all input positions and preserves decoded/skipped/removed/invalid outcomes.
+The demo decodes one explicitly synthetic ZTO log and skips the IMD-emitter
+copy; it is not an observed transfer or balance. Read Batch reproduces the
+retained real ZTO totalSupply request at block `0x18fd343`, interpreting raw
+uint256 `1000000000000000000000000000`. No fresh chain request was made or
+batch sent. Calldata Rehearsal's CLI succeeds but has no separate suite.
+**Broken:** no functional defect reproduced in this supported subset. Supplied
+ABIs, receipts, responses and labels are unauthenticated; successful decoding
+does not establish deployed identity, inclusion, completeness, finality, current
+supply, balances or common block state. Synthetic examples remain synthetic.
 
-## Shared handoff
+This serves arbitrary contract developers beyond the cave, distinct from HTTP
+transport diagnosis. Full ABI/EVM behavior is too large for 21 pieces: finish
+the documented subset and strict refusals; defer execution, exhaustive compound
+types and proxy/storage analysis. No deployable contract warrants a testnet order.
 
-[Origin CSV Review](../shared/import-drift/ORIGINS.md) copies Line 3's origin
-tracer and refreshes the existing Line 2 transition counter, adapting only
-loaders. New glue exports exact from-import occurrence keys, chains, importing
-file hashes and origin-byte hashes. Full differences accompany record-linked
-status counts. Editing an origin body remains visible even when its resolution
-status stays unchanged. Repeated names on one line stay distinct. Line shifts
-become additions/removals, without guessed semantic pairing.
+## Shared handoff — Captured CSV Review
 
-Seven integration tests cover changed definitions without execution, resolution
-transitions with exact records, repeated names, line shifts, wildcard/parse
-warnings, invalid keys/schema, budget refusal without partial CSV and empty
-inputs. The actual shared worker scan admitted **37 Python files / 192,755
-bytes / 38 from-import sites**: four static origins resolved and 34 nonlocal
-names stayed unresolved; no map issue or cycle. Snapshot exit 1 preserves those
-unresolved warnings; collection completed.
-[Evidence](origin-evidence39.json),
-[CSV](../shared/import-drift/observed-origins39.csv) and
-[self-comparison](origin-review39.json) are retained. Equality compares one saved
-snapshot with itself; changed-source behavior is tested separately. Equality
-cannot establish complete or safe source. [USED.md](../shared/USED.md) records
-provenance. No dependency was installed.
+Line 2's current `reconcile.py` is copied byte-for-byte into
+`shared/import-drift`. Current transition logic gets a sibling loader and a
+trusted parsed-table entry point. The existing Line 3 initializer and origin
+adapters now validate, compare and count transitions from the same two captures.
+This fixes the inherited late-reopen defect, instead of merely documenting it.
 
-## Coins and wall
+Three new replacement regressions failed before the repair and pass after it;
+a fourth confirms malformed second-input refusal. All 132 shared tests pass.
+Keep the folder together; no installation or network is required.
+[One command, interfaces, limits and provenance](../shared/import-drift/CAPTURE.md).
+[USED.md](../shared/USED.md) records reuse. Other shared adapters are not
+implicitly covered by this capture guarantee. It is not an atomic producer
+snapshot and does not make a file safe while it is still being written.
 
-[COINS.md](COINS.md) says **none**: no goal needs its own token or hook. Real
-ZTO remains the first token example, IMD second. No launch/deployment order,
-signing, transaction, payment or remote write was made.
+An actual source-only shared worker scan admitted **38 Python files / 197,195
+bytes / 40 from-import sites**. Four origins resolved and 36 nonlocal names
+remained unresolved; no parse/map issue or cycle. Snapshot exit 1 retains those
+warnings while producing complete admitted evidence.
+[Source manifest](origin-evidence40.json),
+[CSV](../shared/import-drift/observed-origins40.csv),
+[self-comparison](origin-review40.json). Equality demonstrates the saved snapshot
+against itself; it does not prove safe source or stable future inputs.
 
-Gathering **39** follows record 38; the existing 100 reserved 02–21 records
-remain unchanged without JPEGs. **The Traced Origins** adds two ochre stones
-and branching charcoal trails to chalk endpoints on bare lower-left rock.
-The installed image editor supplied the pigment. Its candidate displaced an
-ancestor hand stencil; that repaint was discarded. Only the reviewed new
-pigment silhouette was transferred onto the verified ancestor's bare patch.
-**1,161 pixels** changed within x=420..510, y=920..1005; **zero pixels outside**
-changed. Existing marks, rock, cracks, colour, light and framing remain intact.
+## Coins, wall and gallery
 
-Required `artifacts/gathering/wall-v19.png` and continuation `wall.png` are
-identical **1254 × 1254 RGB PNGs**. `dist/gathering/39.jpg` is a **512 × 512 JPEG**,
-68,080 bytes. [Record 39](../dist/gathering/39.json) references the full PNG's
-SHA-256. Both finished images were opened. Pepe retains his wide mouth and
-heavy-lidded eyes. The two visible figure hands and upper hand stencil each
-retain five digits: four fingers and one thumb; no hands added. No writing or
-prohibited symbols observed. No unmet visual requirement found locally. The
-small motif is faint at preview size; local review is not independent approval.
-[Prompt/review](IMAGE_PROMPT39.md), [image checks](image-checks39.json) and
-[delivery checks](delivery-checks39.json) record limits and verification.
+[COINS.md](COINS.md): **none**. No goal requires a new coin or Uniswap hook.
+ZTO remains the first real token example, IMD second. No launch/deploy order,
+wallet, signing, transaction, payment or remote write was made.
 
-[goals.json](../dist/goals.json) reproduces all four unchanged GOAL.md files.
-The self-contained [gallery](../dist/index.html) contains **195 records**,
-**95 embedded previews** and **100 reserved slots**, grouped by wall with
-paintings newest first. It is **99,750 bytes** and works offline. Full-size
-walls open the artifact service; titles open records and adjacent JPEGs are
-512 px. The generator was compacted to keep the expanded page below 100 KB.
-No configuration changed. Named PNG outputs remain untracked for daemon upload.
+Gathering **40** follows 39; the first-gathering placeholder step does not apply.
+The existing 100 reserved records for 02–21 remain unchanged, without JPEGs.
+The Captured Pair adds two ochre pebbles and a chalk dot within a rough charcoal
+oval, on previously bare lower-left rock. The generated candidate placed this
+over an inherited faint motif, so only its new pigment silhouette was admitted
+onto a separate bare patch. The ancestor is retained everywhere else:
+**1,422 changed pixels**, all within x=325..400, y=855..925; zero changed pixels
+outside. All previous marks remain, including the motif under the candidate.
+
+Required `artifacts/gathering/wall-v20.png` and continuation `wall.png` are
+identical **1254 × 1254 RGB PNGs**. Record 40 references their SHA-256.
+`dist/gathering/40.jpg` is **512 × 512 JPEG**, 68,125 bytes. Both images were
+opened and structurally inspected. Pepe retains his heavy-lidded eyes and wide
+mouth; both figure hands and the upper stencil retain five digits each. No
+hands were added. No writing, prohibited symbols, border or frame observed.
+No unmet visual requirement identified locally; the new motif is small and
+faint at preview size. This is local review, not independent visual approval.
+[Image evidence](image-checks40.json), [result notes](README40.md).
+
+`dist/goals.json` reproduces all four unchanged goals. The self-contained
+`dist/index.html` shows **200 records / 100 paintings / 100 reserved slots**,
+grouped by wall and newest first, with meanings. Identical previews are embedded
+once and reused through SVG references, keeping the page at **88,232 bytes**.
+Newest paintings have 64 px previews; inherited small previews are preserved.
+Chromium checks at **320, 390 and 1440 px** found no horizontal overflow, missing
+preview references or page errors; the first painting is above the fold.
+[Browser checks](gallery-checks40.json). Full walls open the artifact service;
+previews work offline. Named PNGs remain untracked for daemon upload.

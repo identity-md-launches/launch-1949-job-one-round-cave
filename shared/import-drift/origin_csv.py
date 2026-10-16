@@ -20,7 +20,7 @@ SCOPE = ('Static module-body from-import candidates, not verified runtime bindin
          'Line shifts appear as removals/additions. Conditional/nested imports and '
          'runtime rebinding are outside the tracer. Keep snapshot stderr evidence: '
          'CSV equality does not certify complete, safe or warning-free source. '
-         'Inputs must remain stable during collection and comparison.')
+         'Keep sources stable during collection. CSV comparisons read each side once; this is not an atomic pair capture.')
 
 
 def canonical(value):
@@ -55,8 +55,8 @@ def snapshot(root, limits=None):
 
 
 def compare(before, after):
-    for path in (before, after):
-        columns, groups, _ = reconcile.load_table(path, KEYS)
+    tables = [reconcile.load_table(path, KEYS) for path in (before, after)]
+    for columns, groups, _ in tables:
         if columns != list(COLUMNS):
             raise ValueError('expected origin-csv/v1 columns')
         for key, rows in groups.items():
@@ -67,9 +67,9 @@ def compare(before, after):
                         str(int(number)) != number or int(number) < minimum):
                     raise ValueError('invalid source coordinate')
     return {'schema': 'origin-review/v1',
-            'comparison': reconcile.reconcile(before, after, KEYS),
-            'status_transitions': transitions.transitions(
-                before, after, KEYS, ['status'], include_records=True),
+            'comparison': reconcile.reconcile_tables(*tables, KEYS),
+            'status_transitions': transitions.transitions_tables(
+                *tables, KEYS, ['status'], include_records=True),
             'scope': SCOPE}
 
 

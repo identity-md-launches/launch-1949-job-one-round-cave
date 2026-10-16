@@ -1,0 +1,44 @@
+{
+  "ancestor_sha256": "98cc7609e4cba7a729ce56471c93acd9a26b841510cdc15cc077d995dd3749da",
+  "generated_sha256": "a61ca681a7661f0bc7b8b62fda342276840060efbd0bac5f689d5aca46bf57f2",
+  "png": {
+    "path": "artifacts/gathering/wall-v20.png",
+    "format": "PNG",
+    "mode": "RGB",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "bytes": 4017207,
+    "sha256": "6e2c307ae396103b96af2e5844698facd7b5b26f895d530d08973db8b8962fe3"
+  },
+  "jpeg": {
+    "path": "dist/gathering/40.jpg",
+    "format": "JPEG",
+    "dimensions": [
+      512,
+      512
+    ],
+    "bytes": 68125
+  },
+  "preservation": {
+    "rectangle": [
+      325,
+      855,
+      400,
+      925
+    ],
+    "changed_pixels": 1422,
+    "changed_bounds": [
+      325,
+      870,
+      400,
+      909
+    ],
+    "outside_rectangle_changed_pixels": 0
+  },
+  "model": "installed image edit tool; generated pigment isolated over verified ancestor",
+  "visual_review_completed": true,
+  "unmet_visual_requirements": [],
+  "visual_review": "Opened the full PNG and 512 px JPEG. Two visible figure hands and the inherited upper stencil retain five digits each; no hands added. Existing marks preserved outside the bare patch. New pigment is small/faint at JPEG size. No writing or prohibited symbol observed."
+}
