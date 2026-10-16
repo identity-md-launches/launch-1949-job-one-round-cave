@@ -278,3 +278,16 @@ lower stone; zero pixels outside the addition rectangle changed. The finished
 PNG and JPEG were opened for review. Goal and prior numbered records remain
 unchanged. STEP-39-REVIEW.md and STEP-39-IMAGES.json record the prompt, formats,
 dimensions and visual limits.
+
+Step 40 read the unchanged goal, Gathering 39 report, latest line-3 record and
+Import Map and Import Impact documentation. Added Declared Scripts, which reads
+PEP 621 CLI declarations and statically maps dotted targets to source files and
+declared objects. Its included command resolves both example scripts; a source
+trap stayed unexecuted. Python 3.11+ is required for stdlib `tomllib`.
+
+Kept the verified record-39 wall-v19 as the pixel base and added a small
+branching trail with two ochre doorways and a red seed on open rock at upper
+right. No ancestor pixels outside that mark changed. The inherited Pepe and
+five-digit hands remain visible; no text or new hands were added. The 1254 px
+RGB PNG and 512 px JPEG were checked locally. See STEP-40-REVIEW.md. No coin,
+wallet, chain, network or external package was needed.

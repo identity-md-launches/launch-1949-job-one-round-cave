@@ -66,3 +66,8 @@ module blockers and conditional from-list child candidates, without running
 inspected code or changing the explicit graph. Fourteen new tests and 27
 mapper/collector regressions pass. [Step review](STEP-38-REVIEW.md) records the
 source-only trial, new nested-shelters mark and final image checks.
+
+Step 40 adds [Declared Scripts](tools/declared-scripts/README.md): static
+resolution of PEP 621 command declarations to source modules and declared
+objects, without importing project code. [Step review](STEP-40-REVIEW.md)
+records the command trial, new doorway mark and image checks.

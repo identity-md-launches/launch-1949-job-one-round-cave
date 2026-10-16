@@ -1,0 +1,9 @@
+[project]
+name = "trail-demo"
+version = "0.1"
+
+[project.scripts]
+trail = "trail.cli:main"
+
+[project.gui-scripts]
+trail-window = "trail.gui:launch"
