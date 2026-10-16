@@ -1,0 +1,30 @@
+{
+  "name": "The Unfinished Vessel",
+  "image": "https://api.imd.fun/artifacts/34c977c7def2d5a0cb37ffab11b2aed721d052a316a27d71c2374e7ff47ecc35",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Ice"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 1"
+    },
+    {
+      "trait_type": "Number",
+      "value": 40
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Accept Lens — truncated-transfer repair"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "An intact bowl and a broken bowl remind a worker to check that the whole response arrived."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Diagnose public HTTP endpoint failures"
+    }
+  ]
+}

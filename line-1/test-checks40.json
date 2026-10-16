@@ -1,0 +1,15 @@
+{
+  "baseline_regression": {
+    "source": "HEAD:line-1/tools/accept-lens/accept_lens.py",
+    "command": "python3 -B -m unittest discover -s test/scratch -p test_truncation.py -k valid_json_with_short_content_length -v",
+    "exit_code": 1,
+    "observed_failure": "AssertionError: True is not false; short Content-Length capture reported ok"
+  },
+  "repaired_suite": {
+    "command": "python3 -B -m unittest discover -s line-1/tools/accept-lens -v",
+    "tests": 17,
+    "passed": 17
+  },
+  "live_observation": "tools/accept-lens/observed-live40.json",
+  "authority": "Local checks only; not independent certification."
+}

@@ -79,7 +79,16 @@ def observe(url, accept, max_bytes, timeout, factory=None):
         result.update(status=response.status,
                       media_type=content_type.split(";", 1)[0].strip().lower(),
                       content_encoding=encoding.lower(),
-                      redirect_location_present=bool(response.getheader("Location")))
+                      redirect_location_present=bool(response.getheader("Location")),
+                      body_complete=False)
+        # HTTPResponse.read1() can return EOF without raising IncompleteRead
+        # when a Content-Length body is cut short. Preserve its initial length
+        # and check the unread remainder before admitting a completed capture.
+        # This is the parser's expected body length: 204/304 have length zero
+        # even when a 304 includes representation-length metadata.
+        expected = getattr(response, "length", None)
+        if expected is not None:
+            result["expected_body_bytes"] = expected
         if encoding.lower() not in ("", "identity"):
             raise ValueError("server returned compressed body despite identity request")
         body = bytearray()
@@ -96,6 +105,10 @@ def observe(url, accept, max_bytes, timeout, factory=None):
         result["body_bytes"] = len(body)
         if len(body) > max_bytes:
             raise ValueError("response exceeds byte limit")
+        remaining = getattr(response, "length", None)
+        if remaining is not None and remaining != 0:
+            raise ValueError("response ended before declared Content-Length")
+        result["body_complete"] = True
         result["body_sha256"] = hashlib.sha256(body).hexdigest()
         try:
             strict_json(body)

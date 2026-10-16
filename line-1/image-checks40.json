@@ -1,0 +1,42 @@
+{
+  "ancestor_sha256": "80b1a6215f8f716f368b5359c43a0847bc7223c0d739275753eb8697151e23f3",
+  "wall_sha256": "34c977c7def2d5a0cb37ffab11b2aed721d052a316a27d71c2374e7ff47ecc35",
+  "png": {
+    "width": 1254,
+    "height": 1254,
+    "format": "RGB PNG",
+    "bytes": 4017952
+  },
+  "jpeg": {
+    "width": 512,
+    "height": 512,
+    "format": "JPEG",
+    "bytes": 96332
+  },
+  "changed_pixels": 851,
+  "changed_bounds": {
+    "minX": 441,
+    "maxX": 573,
+    "minY": 218,
+    "maxY": 264
+  },
+  "changed_pixels_outside_patch": 0,
+  "visual_review": {
+    "reviewed_files": [
+      "artifacts/line-1/wall-v20.png",
+      "dist/line-1/40.jpg"
+    ],
+    "method": "Opened the finished wall and preview; compared decoded pixels against hash-verified record 39.",
+    "ancestor_marks_preserved": true,
+    "new_mark": "Two small yellow-ochre bowls with spilled grains on bare upper rock.",
+    "letters_numbers_logos_borders_observed": false,
+    "new_hands_or_handprints": 0,
+    "unmet_visual_requirements": [
+      "Inherited simplified frog hands do not resolve separate digits, so five-digit anatomy cannot be certified without redrawing ancestral marks."
+    ],
+    "other_limitations": [
+      "The new motif is small at preview size.",
+      "This is local visual review, not independent approval."
+    ]
+  }
+}

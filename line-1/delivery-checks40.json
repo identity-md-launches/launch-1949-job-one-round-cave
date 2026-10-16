@@ -1,0 +1,16 @@
+{
+  "record_count": 40,
+  "new_record": "dist/line-1/40.json",
+  "older_records_unchanged": 39,
+  "goal_byte_identical": true,
+  "record_matches_wall_sha256": true,
+  "continuation_matches_named_output": true,
+  "named_outputs_untracked": true,
+  "jpeg_dimensions": [
+    512,
+    512
+  ],
+  "jpeg_bytes": 96332,
+  "all_changed_paths_in_scope": true,
+  "no_new_file_over_100KB_outside_artifacts": true
+}

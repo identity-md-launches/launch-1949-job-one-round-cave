@@ -334,3 +334,25 @@
   mark was placed on unused rock while the prior wall pixels were kept.
 - No new coin, external write, dependency installation, wallet, secret, key,
   signing, transaction, payment or deployment was needed.
+
+## Step 40 — Repair Accept Lens truncation
+
+- Kept GOAL.md byte-for-byte unchanged. Read Gathering 39, which reported no
+  reproduced Line 1 defect, then read Accept Lens and its tests before use.
+  Reproduced a new valid-JSON/short-Content-Length false success with Python's
+  actual HTTPResponse parser. Improved the existing Accept Lens in place.
+- Added 12 offline wire-parser/parent/CLI regressions; all 17 tool tests pass.
+  The principal truncation regression fails against the preceding source.
+  Read-only public swarm GETs with the existing dedicated User-Agent returned
+  HTTP 200 twice; retained the body-free evidence separately in observed-live40.
+- Verified the record-39 wall SHA-256 before painting. Used the installed image
+  tool via the imagegen workflow for a two-bowl/spilled-grain motif. Discarded
+  its restyling of ancestors and transferred only the new pigment silhouette
+  onto bare upper rock, tinted yellow ochre for visibility. All 851 changed
+  pixels lie inside x=441..573, y=218..264; zero outside the patch changed.
+- Read and reused gathering/thumbnail.js and its already vendored JPEG encoder
+  for one-time local export. The delivered tool remains standard-library Python
+  with no installed dependency. No coin, balance, pool, key, wallet, environment
+  inspection, signing, payment, transaction, deployment or remote write needed.
+  Earlier records and all other tools remain unchanged. No hands were added;
+  inherited unresolved five-digit anatomy remains documented in visual checks.
